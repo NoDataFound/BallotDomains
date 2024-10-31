@@ -3,9 +3,10 @@
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.3.0-brightgreen)
 ![Plotly](https://img.shields.io/badge/Plotly-5.3.1-orange)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-Ballot.Domain is a dynamic domain tracker for political candidates. Using the DNSlytics API, it fetches and updates domain lists for each candidate daily. The app presents domain stats in a fun, interactive interface powered by Streamlit, complete with candidate-specific metrics, a donut chart, and automatic CSV updates.
+Ballot.Domain is a dynamic domain tracker for political candidates. Using the DNSlytics API, it fetches and updates domain lists for each candidate daily. 
+
+<img width="1880" alt="Screenshot 2024-10-31 at 3 34 04 PM" src="https://github.com/user-attachments/assets/ed0ff217-0844-4a84-8733-8eed8624a4df">
 
 ## Features
 
