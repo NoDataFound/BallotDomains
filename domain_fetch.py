@@ -19,8 +19,8 @@ def fetch_domains(candidate_name):
     candidate_query = candidate_name.replace(" ", "").lower()
     all_domains = set()
     
-    for page in range(1, 41):  
-        url = f"https://api.dnslytics.net/v1/domainsearch/{candidate_query}?apikey={API_KEY}&tld=all&active=1&page={page}"
+    for page in range(1, 41): 
+        url = f"https://api.dnslytics.net/v1/domainsearch/{candidate_query}?apikey={API_KEY}&tld=all&active=1&fromdate=20200101&page={page}"
         response = requests.get(url)
         
         if response.status_code == 200:
@@ -67,7 +67,7 @@ def daily_update():
         if current_time - last_checked >= timedelta(days=1):
             update_domains()
             last_checked = current_time
-        time.sleep(86400) 
+        time.sleep(86400)  
 
 if __name__ == "__main__":
     daily_update()
