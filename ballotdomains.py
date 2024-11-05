@@ -10,9 +10,9 @@ load_dotenv('.env')
 
 st.set_page_config(page_title="Ballot.Domain", page_icon="🇺🇸", layout="wide")
 
-csv_file_path = "candidates_domains.csv"
-
+csv_file_path = "candidates_domains_all.csv"
 API_KEY = os.getenv('DNSLYTICS_API_KEY')
+
 if not API_KEY:
     raise ValueError("Please set the DNSLYTICS_API_KEY environment variable in your .env file.")
 
@@ -21,6 +21,7 @@ def load_data():
 
 df = load_data()
 last_modified_time = os.path.getmtime(csv_file_path)
+previous_domain_counts = df.set_index("Candidate")["Domains"].str.split(", ").apply(len).to_dict()
 
 st.sidebar.image("images/ballotdomainlog.png", width=150, use_column_width=True)
 selected_candidates = st.sidebar.multiselect("Select Candidates", df["Candidate"].unique())
@@ -46,12 +47,13 @@ def display_candidates():
         cols = st.columns(len(selected_candidates))
         for idx, candidate_name in enumerate(selected_candidates):
             candidate_data = df[df["Candidate"] == candidate_name].iloc[0]
-            domain_count = len(candidate_data["Domains"].split(", "))
-            growth_indicator = "+1" if domain_count > 1 else "0"
-            
+            current_domain_count = len(candidate_data["Domains"].split(", "))
+            previous_count = previous_domain_counts.get(candidate_name, current_domain_count)
+            growth_indicator = current_domain_count - previous_count
+
             with cols[idx]:
                 st.image(candidate_data["Photo"], width=100)
-                st.metric(label=candidate_data["Candidate"], value=domain_count, delta=growth_indicator)
+                st.metric(label=candidate_data["Candidate"], value=current_domain_count, delta=growth_indicator)
                 
                 domains = candidate_data["Domains"].split(", ")
                 candidate_domains_df = pd.DataFrame({"Domain": domains})
@@ -89,6 +91,7 @@ while True:
     current_modified_time = os.path.getmtime(csv_file_path)
     if current_modified_time != last_modified_time:
         df = load_data()
+        previous_domain_counts = df.set_index("Candidate")["Domains"].str.split(", ").apply(len).to_dict()
         last_modified_time = current_modified_time
-        st.experimental_rerun()
-    time.sleep(5)  
+        st.rerun()
+    time.sleep(5)
