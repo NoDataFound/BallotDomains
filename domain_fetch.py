@@ -11,7 +11,7 @@ API_KEY = os.getenv('DNSLYTICS_API_KEY')
 if not API_KEY:
     raise ValueError("Please set the DNSLYTICS_API_KEY environment variable in your .env file.")
 
-csv_path = "candidates_domains.csv"
+csv_path = "candidates_domains_all.csv"
 
 df = pd.read_csv(csv_path)
 
@@ -20,7 +20,7 @@ def fetch_domains(candidate_name):
     all_domains = set()
     
     for page in range(1, 41): 
-        url = f"https://api.dnslytics.net/v1/domainsearch/{candidate_query}?apikey={API_KEY}&tld=all&active=1&fromdate=20200101&page={page}"
+        url = f"https://api.dnslytics.net/v1/domainsearch/{candidate_query}?apikey={API_KEY}&tld=all&active=all&fromdate=20200101&page={page}"
         response = requests.get(url)
         
         if response.status_code == 200:
