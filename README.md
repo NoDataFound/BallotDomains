@@ -10,6 +10,8 @@ Ballot.Domain is a dynamic domain tracker for political candidates. Using the DN
 
 <img width="1880" alt="BallotDomains Terms Word Cloud" src="https://github.com/NoDataFound/BallotDomains/blob/main/images/ballotdomains_terms_wordcloud.png">
 
+<img width="1880" alt="BallotDomains Terms Word Cloud" src="https://github.com/NoDataFound/BallotDomains/blob/main/images/VT_graph.png">
+
 
 ## Features
 
