@@ -1,4 +1,4 @@
-# Ballot.Domain
+# Ballot.Domains
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.3.0-brightgreen)
