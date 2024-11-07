@@ -6,7 +6,7 @@
 
 Ballot.Domain is a dynamic domain tracker for political candidates. Using the DNSlytics API, it fetches and updates domain lists for each candidate daily. 
 
-<img width="1880" alt="Screenshot 2024-10-31 at 3 34 04 PM" src="https://github.com/user-attachments/assets/ed0ff217-0844-4a84-8733-8eed8624a4df">
+<img width="1880" alt="BallotDomains" src="https://raw.githubusercontent.com/NoDataFound/BallotDomains/refs/heads/main/images/ballotdomains.png">
 
 ## Features
 
