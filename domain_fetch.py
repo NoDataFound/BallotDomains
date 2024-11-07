@@ -20,7 +20,7 @@ def fetch_domains(candidate_name):
     all_domains = set()
     
     for page in range(1, 41): 
-        url = f"https://api.dnslytics.net/v1/domainsearch/{candidate_query}?apikey={API_KEY}&tld=all&active=all&fromdate=20200101&page={page}"
+        url = f"https://api.dnslytics.net/v1/domainsearch/{candidate_query}?apikey={API_KEY}&tld=all&active=all&fromdate=20150101&page={page}"
         response = requests.get(url)
         
         if response.status_code == 200:
